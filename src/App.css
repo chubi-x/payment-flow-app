@@ -38,6 +38,7 @@ div.checkout-step-bar-rule {
 
 .form .form-label {
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .form .form-inputs {
@@ -46,11 +47,10 @@ div.checkout-step-bar-rule {
     padding: 20px;
     margin: 20px 0px;
     outline: none;
+    width: 100%;
 }
 
 .location {
-    display: flex;
-    justify-content: space-between;
     height: 100px;
 }
 
@@ -71,13 +71,14 @@ div.checkout-step-bar-rule {
     justify-content: center;
 }
 
-.state select {
+.form select {
     display: inline-block;
     height: 43px;
     line-height: 43px;
     border-radius: 10px;
     background: white;
     margin-top: 6px;
+    outline: none;
 }
 
 .state label {
@@ -85,10 +86,34 @@ div.checkout-step-bar-rule {
     bottom: 11px;
 }
 
+.card-details {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card-number {
+    width: 60%;
+}
+
+.card-exp-date {
+    width: 20%;
+    margin-left: 40px;
+
+}
+
+.card-cvv {
+    width: 20%;
+    margin-left: 40px;
+    text-align: center;
+
+}
+
 /* FLOW BUTTONS STYLING */
 .flow-buttons {
     margin: 70px 0px;
-    width: 500px;
+    width: auto;
 }
 
 .flow-buttons .next-button {
