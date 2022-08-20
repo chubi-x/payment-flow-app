@@ -1,5 +1,5 @@
 import React from "react";
-export default function CheckoutStepItem(props) {
+export default function CheckoutStep(props) {
   return (
     <div className="checkout-step-item cursor-pointer">
       <h2
