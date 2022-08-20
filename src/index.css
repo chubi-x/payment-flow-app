@@ -20,32 +20,3 @@ div.App {
     /* padding: 100px;
     padding-left: 200px; */
 }
-
-div.flow-container {
-    margin: 0 auto;
-}
-
-div.checkout-step-item {
-    width: 150px;
-    font-weight: bold;
-    color: #BDBDBD;
-}
-
-div.checkout-step-bar {
-    position: relative;
-}
-
-div.checkout-step-bar-item {
-    height: 10px;
-    width: 150px;
-    border-radius: 10px;
-    z-index: 999;
-}
-
-div.checkout-step-bar-rule {
-    position: relative;
-    top: -5px;
-    z-index: -999;
-    height: 1px;
-    border-top: 1px solid black;
-}
