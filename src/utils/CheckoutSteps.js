@@ -1,9 +1,9 @@
 import React from "react";
 import CheckoutStepItem from "./CheckoutStepItem";
 import CheckoutStepBarItem from "./CheckoutStepBarItem";
-export default function CheckoutFlowTab() {
+export default function CheckoutSteps() {
   return (
-    <div className="checkout-step-container pt-8">
+    <div className="checkout-step-container pt-8 mb-10">
       <div className="checkout-step-item-container container flex justify-between mx-auto ">
         <CheckoutStepItem value={"Personal Info"} active={true} />
         <CheckoutStepItem value={"Billing Info"} />
