@@ -1,6 +1,9 @@
 div.flow-container {
     margin: 0 auto;
+    height: 100%;
 }
+
+/* CHECKOUT STEPS STYLING */
 
 div.checkout-step-item {
     width: 150px;
@@ -26,6 +29,63 @@ div.checkout-step-bar-rule {
     height: 1px;
     border-top: 1px solid black;
 }
+
+/* PROFILE COMPONENT STYLING */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form .form-label {
+    font-weight: bold;
+}
+
+.form .form-inputs {
+    border-radius: 10px;
+    height: 20px;
+    padding: 20px;
+    margin: 20px 0px;
+    outline: none;
+}
+
+.location {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+
+
+
+.local-government,
+.state {
+    display: flex;
+    flex-direction: column;
+}
+
+.local-government {
+    width: 65%;
+}
+
+.state {
+    width: 35%;
+    justify-content: center;
+}
+
+.state select {
+    display: inline-block;
+    height: 43px;
+    line-height: 43px;
+    border-radius: 10px;
+    background: white;
+    margin-top: 6px;
+}
+
+.state label {
+    position: relative;
+    bottom: 20px;
+}
+
+/* COMPLETED PAYMENTS PAGE STYLING */
 
 div.completed-payment {
     background-color: white;
