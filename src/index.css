@@ -10,6 +10,10 @@ body {
     height: 100vh;
 }
 
+#root {
+    /* height: inherit; */
+}
+
 div.App {
     height: inherit;
     display: flex;
@@ -18,7 +22,7 @@ div.App {
     background-position: left top;
     background-size: 100%;
     background-repeat: no-repeat;
-    padding-top: 50px;
+    /* padding-top: 50px; */
     /* justify-content: flex-start; */
     /* padding: 100px;
     padding-left: 200px; */
