@@ -11,14 +11,14 @@ body {
 }
 
 div.App {
-    height: 100vh;
+    height: inherit;
     display: flex;
     align-items: flex-start;
     background-image: url('./images/bg-2.svg');
     background-position: left top;
     background-size: 100%;
     background-repeat: no-repeat;
-    padding-top: 90px;
+    padding-top: 50px;
     /* justify-content: flex-start; */
     /* padding: 100px;
     padding-left: 200px; */

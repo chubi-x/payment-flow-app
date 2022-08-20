@@ -82,7 +82,21 @@ div.checkout-step-bar-rule {
 
 .state label {
     position: relative;
-    bottom: 20px;
+    bottom: 11px;
+}
+
+/* FLOW BUTTONS STYLING */
+.flow-buttons {
+    margin: 70px 0px;
+    width: 500px;
+}
+
+.flow-buttons .next-button {
+    width: 200px;
+    height: 58px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
 }
 
 /* COMPLETED PAYMENTS PAGE STYLING */
