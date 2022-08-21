@@ -32,12 +32,8 @@ div.checkout-step-bar-rule {
     border-top: 1px solid black;
 }
 
-/* CLICK ANIMATIONS */
-.active-tab {
-    /* transform: translate(-1%); */
-}
 
-/* PROFILE COMPONENT STYLING */
+/* FORM  STYLING */
 .form {
     display: flex;
     flex-direction: column;
