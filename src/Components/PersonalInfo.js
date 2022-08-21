@@ -78,6 +78,7 @@ export default function PersonalInfo(props) {
             id="state"
             className="border border-purple pl-2"
           >
+            <option>Select state</option>
             {states.map((state, index) => (
               <option key={index}>{state}</option>
             ))}
