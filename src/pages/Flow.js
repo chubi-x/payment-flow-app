@@ -48,6 +48,26 @@ export default function Flow() {
 
   // FUNCTIONS
 
+  const [pay, setPay] = useState(false);
+
+  const nextTab = useCallback(() => {
+    setActiveTab((tabs) => {
+      const newTabs = [...tabs];
+      for (let i = 0; i < newTabs.length; i++) {
+        if (newTabs[i].name === "confirmPayment") {
+          setPay(true);
+        }
+        if (newTabs[i].active) {
+          if (i + 1 < newTabs.length) {
+            newTabs[i].active = false;
+            newTabs[i + 1].active = true;
+            break;
+          }
+        }
+      }
+      return newTabs;
+    });
+  }, []);
   function handleSubmit(e) {
     e.preventDefault();
     console.log(formInfo);
@@ -81,7 +101,7 @@ export default function Flow() {
             {activeTab[1].active && <Billing update={handleChange} />}
             {activeTab[2].active && <ConfirmPayment />}
           </form>
-          <FlowButtons checkout={checkout} />
+          <FlowButtons checkout={checkout} pay={pay} next={nextTab} />
         </div>
       </ActiveTabContext.Provider>
     </FormContext.Provider>
