@@ -17,7 +17,7 @@ export default function PersonalInfo() {
           Email <span className="text-red">*</span>
         </label>
         <p className="text-purple text-xs">
-          The purchase recipt will be sent to this address
+          The purchase receipt will be sent to this address
         </p>
         <input
           className="form-inputs border border-purple"
