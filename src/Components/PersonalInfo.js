@@ -66,7 +66,7 @@ export default function PersonalInfo() {
               className="border border-purple pl-2"
             >
               {states.map((state) => (
-                <option>{state}</option>
+                <option key={state}>{state}</option>
               ))}
             </select>
           </div>

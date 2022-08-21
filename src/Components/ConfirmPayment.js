@@ -14,7 +14,7 @@ export default function ConfirmPayment() {
       </div>
       <div className="order-details-container text-purple">
         {cart.map((item) => (
-          <div className="order-details px-10">
+          <div className="order-details px-10" key={item.title}>
             <h5 className="title" key={item.title}>
               {item.title}
             </h5>
