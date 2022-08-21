@@ -19,17 +19,8 @@ export default function Flow() {
       active: false,
     },
   ]);
-  function toggleActive(tab) {
-    setActiveTab((prevActiveTab) => {
-      return prevActiveTab.map((item) => {
-        const name = item.name;
-        return {
-          ...item,
-          active: tab === name ? true : false,
-        };
-      });
-    });
-  }
+
+  function toggleActive(tab) {}
   return (
     <div className="flow-container container flex flex-col justify-center mx-auto w-2/3 h-full pt-10 md:w-1/2">
       <div className="header">
@@ -37,8 +28,9 @@ export default function Flow() {
           Complete your Purchase
         </h1>
       </div>
-      <CheckoutSteps activeTab={activeTab} toggleActive={toggleActive} />
+      <CheckoutSteps activeTab={activeTab} toggleActive={setActiveTab} />
 
+      <form id="checkout-form"></form>
       {activeTab[0].active && <PersonalInfo />}
       {activeTab[1].active && <Billing />}
       {activeTab[2].active && <ConfirmPayment />}

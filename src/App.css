@@ -20,6 +20,8 @@ div.checkout-step-bar-item {
     width: 150px;
     border-radius: 10px;
     z-index: 999;
+    transition: all 0.5s ease;
+
 }
 
 div.checkout-step-bar-rule {
@@ -28,6 +30,11 @@ div.checkout-step-bar-rule {
     z-index: -999;
     height: 1px;
     border-top: 1px solid black;
+}
+
+/* CLICK ANIMATIONS */
+.active-tab {
+    /* transform: translate(-1%); */
 }
 
 /* PROFILE COMPONENT STYLING */
@@ -94,18 +101,21 @@ div.checkout-step-bar-rule {
 }
 
 .card-number {
-    width: 60%;
+    width: 50%;
 }
 
 .card-exp-date {
     width: 20%;
-    margin-left: 40px;
 
 }
 
+.card-exp-date label {
+    /* display: inline-block; */
+    width: 100%;
+}
+
 .card-cvv {
-    width: 20%;
-    margin-left: 40px;
+    width: 15%;
     text-align: center;
 
 }
