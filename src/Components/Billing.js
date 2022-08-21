@@ -11,6 +11,7 @@ export default function Billing() {
           name="card-name"
           type="text"
           autoComplete="disabled"
+          required
           className="form-inputs border border-purple"
         />
         <label htmlFor="card-type" className="form-label">
@@ -34,8 +35,9 @@ export default function Billing() {
             </label>
             <input
               name="card-number"
-              type="text"
+              type="number"
               autoComplete="disabled"
+              required
               className="form-inputs border border-purple"
             />
           </div>
@@ -48,6 +50,7 @@ export default function Billing() {
               name="card-exp-date"
               type="text"
               autoComplete="disabled"
+              required
               className="form-inputs border border-purple"
             />
           </div>
@@ -58,8 +61,9 @@ export default function Billing() {
             </label>
             <input
               name="card-cvv"
-              type="text"
+              type="number"
               autoComplete="disabled"
+              required
               className="form-inputs border border-purple"
             />
           </div>
