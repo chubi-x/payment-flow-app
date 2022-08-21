@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ActiveTabContext } from "../Helpers/Context";
 import CheckoutStep from "./CheckoutStep";
 import CheckoutStepBar from "./CheckoutStepBar";
-export default function CheckoutSteps({ activeTab, toggleActive }) {
+export default function CheckoutSteps() {
+  const { activeTab } = useContext(ActiveTabContext);
   return (
     <div className="checkout-step-container pt-8 mb-10">
       <div className="checkout-step-item-container container flex justify-between mx-auto ">
@@ -10,7 +12,7 @@ export default function CheckoutSteps({ activeTab, toggleActive }) {
             key={index}
             active={tab.active}
             value={tab.name}
-            toggle={toggleActive}
+            // toggle={toggleActive}
           />
         ))}
       </div>

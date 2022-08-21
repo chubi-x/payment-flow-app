@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-export default function FlowButtons({ activeTab, nextTab }) {
+import React, { useContext, useState } from "react";
+import { ActiveTabContext } from "../Helpers/Context";
+export default function FlowButtons() {
+  const { setActiveTab } = useContext(ActiveTabContext);
   const [pay, setPay] = useState(false);
 
   function next() {
-    nextTab((tabs) => {
+    setActiveTab((tabs) => {
       const newTabs = [...tabs];
       for (let i = 0; i < newTabs.length; i++) {
         if (newTabs[i].name === "confirmPayment") {
