@@ -6,15 +6,19 @@ export default function FlowButtons({ checkout, pay, next }) {
   return (
     <div className="flow-buttons flex flex-col md:flex-row space-x-20">
       <button
-        type="submit"
+        type={`${pay ? "submit" : "button"}`}
+        // type="submit"
         className="next-button bg-gradient-to-r from-yellow1 to-yellow2"
         onClick={() => {
           pay ? checkout() : next();
         }}
+        form="checkout"
       >
         {`${pay ? "Pay" : "Next"}`}
       </button>
-      <button className="text-purple font-bold">Cancel Payment</button>
+      <button className="text-purple font-bold" type="button">
+        Cancel Payment
+      </button>
     </div>
   );
 }
