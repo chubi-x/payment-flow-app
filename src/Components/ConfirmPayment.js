@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cart from "../data/cart";
 
 const prices = [];
 cart.forEach((item) => {
   prices.push(item.price);
 });
-export default function ConfirmPayment() {
+export default function ConfirmPayment({ pay }) {
+  useEffect(() => {
+    // activeTab.forEach((tab) => {
+    //   if (tab.name === "confirmPayment" && tab.active) {
+    pay(true);
+    // }
+    // });
+  }, [pay]);
   return (
     <div className="confirm-container flex flex-col">
       <div className="confirm-header flex justify-between items-center bg-blueMain px-10 mb-10">

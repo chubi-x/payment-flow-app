@@ -1,5 +1,5 @@
 // REACT
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   ActiveTabContext,
   CheckoutContext,
@@ -16,6 +16,7 @@ import CheckoutSteps from "../utils/CheckoutSteps";
 import FlowButtons from "../utils/FlowButtons";
 
 export default function Flow() {
+  // STATE
   const [activeTab, setActiveTab] = useState([
     {
       name: "personalInfo",
@@ -30,6 +31,7 @@ export default function Flow() {
       active: false,
     },
   ]);
+
   const [formInfo, setFormInfo] = useState({
     name: "",
     email: "",
@@ -44,19 +46,16 @@ export default function Flow() {
     cardCvv: "",
   });
 
+  const [pay, setPay] = useState(false);
+
   const { setCheckedOut } = useContext(CheckoutContext);
 
   // FUNCTIONS
-
-  const [pay, setPay] = useState(false);
 
   const nextTab = useCallback(() => {
     setActiveTab((tabs) => {
       const newTabs = [...tabs];
       for (let i = 0; i < newTabs.length; i++) {
-        if (newTabs[i].name === "confirmPayment") {
-          setPay(true);
-        }
         if (newTabs[i].active) {
           if (i + 1 < newTabs.length) {
             newTabs[i].active = false;
@@ -68,10 +67,12 @@ export default function Flow() {
       return newTabs;
     });
   }, []);
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formInfo);
+    alert(formInfo);
   }
+
   function handleChange(event) {
     const { name, value } = event.target;
     setFormInfo((prevForm) => {
@@ -96,10 +97,10 @@ export default function Flow() {
           </div>
           <CheckoutSteps />
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} id="checkout">
             {activeTab[0].active && <PersonalInfo update={handleChange} />}
             {activeTab[1].active && <Billing update={handleChange} />}
-            {activeTab[2].active && <ConfirmPayment />}
+            {activeTab[2].active && <ConfirmPayment pay={setPay} />}
           </form>
           <FlowButtons checkout={checkout} pay={pay} next={nextTab} />
         </div>
