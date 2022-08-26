@@ -27,12 +27,13 @@ export default function Billing({ update, pay }) {
       <select
         name="cardType"
         id="cardType"
-        value={formInfo.cardType}
+        value={formInfo.cardType || "Choose card"}
         onChange={update}
         className="border border-purple"
       >
-        <option value="">Visa</option>
-        <option value="">Mastercard</option>
+        <option value="Choose card">Choose card</option>
+        <option value="Visa">Visa</option>
+        <option value="Mastercard">Mastercard</option>
       </select>
 
       <div className="card-details">
@@ -85,3 +86,4 @@ export default function Billing({ update, pay }) {
     </div>
   );
 }
+
