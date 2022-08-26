@@ -1,7 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import states from "../data/states";
 import { FormContext } from "../Helpers/Context";
-export default function PersonalInfo(props) {
+export default function PersonalInfo({ update, pay }) {
+  useEffect(() => {
+    pay(false);
+  }, [pay]);
   const { formInfo } = useContext(FormContext);
   return (
     <div className="form h-full">
@@ -13,7 +16,7 @@ export default function PersonalInfo(props) {
         type="text"
         name="name"
         value={formInfo.name}
-        onChange={props.update}
+        onChange={update}
       />
 
       <label className="form-label" htmlFor="email">
@@ -28,7 +31,7 @@ export default function PersonalInfo(props) {
         required
         name="email"
         value={formInfo.email}
-        onChange={props.update}
+        onChange={update}
       />
 
       <label className="form-label" htmlFor="address1">
@@ -39,7 +42,7 @@ export default function PersonalInfo(props) {
         type="text"
         name="address1"
         value={formInfo.address1}
-        onChange={props.update}
+        onChange={update}
       />
 
       <label className="form-label" htmlFor="address2">
@@ -50,7 +53,7 @@ export default function PersonalInfo(props) {
         type="text"
         name="address2"
         value={formInfo.address2}
-        onChange={props.update}
+        onChange={update}
       />
 
       <div className="location flex flex-col justify-between space-x-10 md:flex-row">
@@ -63,7 +66,7 @@ export default function PersonalInfo(props) {
             type="text"
             name="localGovernment"
             value={formInfo.localGovernment}
-            onChange={props.update}
+            onChange={update}
           />
         </div>
 
@@ -74,7 +77,7 @@ export default function PersonalInfo(props) {
           <select
             name="state"
             value={formInfo.state}
-            onChange={props.update}
+            onChange={update}
             id="state"
             className="border border-purple pl-2"
           >

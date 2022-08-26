@@ -1,6 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { FormContext } from "../Helpers/Context";
-export default function Billing({ update }) {
+export default function Billing({ update, pay }) {
+  useEffect(() => {
+    pay(false);
+  }, [pay]);
   const { formInfo } = useContext(FormContext);
   return (
     <div className="form">

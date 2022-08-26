@@ -11,20 +11,7 @@ export default function CheckoutStep({ value, active, toggle }) {
     return word.join("");
   }
   return (
-    <div
-      className="checkout-step-item cursor-pointer"
-      // onClick={() => {
-      //   toggle((prevActiveTab) => {
-      //     return prevActiveTab.map((item) => {
-      //       const name = item.name;
-      //       return {
-      //         ...item,
-      //         active: value === name ? true : false,
-      //       };
-      //     });
-      //   });
-      // }}
-    >
+    <div className="checkout-step-item cursor-pointer" onClick={toggle}>
       <h2 className={`${active ? "text-yellow2 " : ""} text-base text-center`}>
         {convertCase(value.split(""))}
       </h2>

@@ -1,5 +1,5 @@
 // REACT
-import React, { useCallback, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   ActiveTabContext,
   CheckoutContext,
@@ -17,21 +17,11 @@ import FlowButtons from "../utils/FlowButtons";
 
 export default function Flow() {
   // STATE
-  const [activeTab, setActiveTab] = useState([
-    {
-      name: "personalInfo",
-      active: true,
-    },
-    {
-      name: "billingInfo",
-      active: false,
-    },
-    {
-      name: "confirmPayment",
-      active: false,
-    },
-  ]);
+  const [personalInfo, setPersonalInfo] = useState(true);
+  const [billingInfo, setBillingInfo] = useState(false);
+  const [confirmPayment, setConfirmPayment] = useState(false);
 
+  const tabs = ["Personal Info", "Billing Info", "Confirm Payment"];
   const [formInfo, setFormInfo] = useState({
     name: "",
     email: "",
@@ -52,22 +42,19 @@ export default function Flow() {
 
   // FUNCTIONS
 
-  const nextTab = useCallback(() => {
-    setActiveTab((tabs) => {
-      const newTabs = [...tabs];
-      for (let i = 0; i < newTabs.length; i++) {
-        if (newTabs[i].active) {
-          if (i + 1 < newTabs.length) {
-            newTabs[i].active = false;
-            newTabs[i + 1].active = true;
-            break;
-          }
-        }
-      }
-      return newTabs;
-    });
-  }, []);
-
+  const nextTab = () => {
+    if (personalInfo) {
+      setPersonalInfo(false);
+      setBillingInfo(true);
+      setPay(false);
+    } else if (billingInfo) {
+      setConfirmPayment(true);
+      setBillingInfo(false);
+    } else {
+      setConfirmPayment(true);
+      setPay(false);
+    }
+  };
   function handleSubmit(e) {
     e.preventDefault();
     alert(formInfo);
@@ -88,7 +75,18 @@ export default function Flow() {
   }
   return (
     <FormContext.Provider value={{ formInfo, setFormInfo }}>
-      <ActiveTabContext.Provider value={{ activeTab, setActiveTab }}>
+      <ActiveTabContext.Provider
+        value={{
+          personalInfo,
+          setPersonalInfo,
+          billingInfo,
+          setBillingInfo,
+          confirmPayment,
+          setConfirmPayment,
+          tabs,
+          nextTab,
+        }}
+      >
         <div className="flow-container container flex flex-col justify-center mx-auto w-2/3 h-full pt-10 md:w-1/2">
           <div className="header">
             <h1 className="text-2xl text-purple font-bold mb-4">
@@ -98,9 +96,11 @@ export default function Flow() {
           <CheckoutSteps />
 
           <form onSubmit={handleSubmit} id="checkout">
-            {activeTab[0].active && <PersonalInfo update={handleChange} />}
-            {activeTab[1].active && <Billing update={handleChange} />}
-            {activeTab[2].active && <ConfirmPayment pay={setPay} />}
+            {personalInfo && (
+              <PersonalInfo update={handleChange} pay={setPay} />
+            )}
+            {billingInfo && <Billing update={handleChange} pay={setPay} />}
+            {confirmPayment && <ConfirmPayment pay={setPay} />}
           </form>
           <FlowButtons checkout={checkout} pay={pay} next={nextTab} />
         </div>
