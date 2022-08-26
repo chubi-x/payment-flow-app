@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-export default function FlowButtons({ checkout, pay, next }) {
+export default function FlowButtons({ pay, next }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
@@ -10,7 +10,7 @@ export default function FlowButtons({ checkout, pay, next }) {
         // type="submit"
         className="next-button bg-gradient-to-r from-yellow1 to-yellow2"
         onClick={() => {
-          pay ? checkout() : next();
+          next();
         }}
         form="checkout"
       >
