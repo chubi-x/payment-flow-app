@@ -12,40 +12,54 @@ export default function CheckoutSteps() {
     setConfirmPayment,
   } = useContext(ActiveTabContext);
 
-  const setActive = (tab1, tab2, tab3) => {
-    tab1(true);
-    tab2(false);
-    tab3(false);
+  // function to convert variable name to string
+  const varToString = (variable) => {
+    return Object.keys(variable)[0];
   };
+  // array to hold tab info
+  const tabsInfo = [
+    {
+      bool: personalInfo,
+      setter: setPersonalInfo,
+      name: varToString({ personalInfo }),
+    },
+    {
+      bool: billingInfo,
+      setter: setBillingInfo,
+      name: varToString({ billingInfo }),
+    },
+    {
+      bool: confirmPayment,
+      setter: setConfirmPayment,
+      name: varToString({ confirmPayment }),
+    },
+  ];
+  // function to set active tab
+  const setActive = (tab, ...rest) => {
+    tab(true);
+    rest.forEach((item) => item.setter(false));
+  };
+
+  // checkout step elements
+  const checkOutSteps = tabsInfo.map((item, index, arr) => (
+    <CheckoutStep
+      key={index}
+      active={item.bool}
+      value={item.name}
+      toggle={() =>
+        setActive(item.setter, ...arr.filter((el, i) => i !== index))
+      }
+    />
+  ));
   return (
     <div className="checkout-step-container pt-8 mb-10">
       <div className="checkout-step-item-container container flex justify-between mx-auto ">
-        <CheckoutStep
-          active={personalInfo}
-          toggle={() =>
-            setActive(setPersonalInfo, setBillingInfo, setConfirmPayment)
-          }
-          value={"Personal Info"}
-        />
-        <CheckoutStep
-          active={billingInfo}
-          toggle={() =>
-            setActive(setBillingInfo, setPersonalInfo, setConfirmPayment)
-          }
-          value={"Billing Info"}
-        />
-        <CheckoutStep
-          active={confirmPayment}
-          toggle={() =>
-            setActive(setConfirmPayment, setBillingInfo, setPersonalInfo)
-          }
-          value={"confirmPayment"}
-        />
+        {checkOutSteps}
       </div>
       <div className="checkout-step-bar pt-3 flex flex-row justify-between">
-        <CheckoutStepBar active={personalInfo} />
-        <CheckoutStepBar active={billingInfo} />
-        <CheckoutStepBar active={confirmPayment} />
+        {tabsInfo.map((item, index) => (
+          <CheckoutStepBar key={index} active={item.bool} />
+        ))}
       </div>
       <div className="checkout-step-bar-rule"></div>
     </div>
