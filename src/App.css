@@ -53,26 +53,13 @@ div.checkout-step-bar-rule {
     width: 100%;
 }
 
-.location {
-    height: 100px;
-}
-
-
-
 .local-government,
 .state {
     display: flex;
     flex-direction: column;
 }
 
-.local-government {
-    width: 65%;
-}
 
-.state {
-    width: 35%;
-    justify-content: center;
-}
 
 .form select {
     display: inline-block;
@@ -89,32 +76,7 @@ div.checkout-step-bar-rule {
     bottom: 11px;
 }
 
-.card-details {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
 
-.card-number {
-    width: 50%;
-}
-
-.card-exp-date {
-    width: 20%;
-
-}
-
-.card-exp-date label {
-    /* display: inline-block; */
-    width: 100%;
-}
-
-.card-cvv {
-    width: 15%;
-    text-align: center;
-
-}
 
 /* CONFIRM PAYMENT STYLINGS */
 .confirm-container {
@@ -151,7 +113,7 @@ div.checkout-step-bar-rule {
 
 /* FLOW BUTTONS STYLING */
 .flow-buttons {
-    margin: 70px 0px;
+    margin: 40px 0px;
     width: auto;
 }
 

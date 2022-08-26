@@ -56,8 +56,8 @@ export default function PersonalInfo({ update, pay }) {
         onChange={update}
       />
 
-      <div className="location flex flex-col justify-between space-x-10 md:flex-row">
-        <div className="local-government">
+      <div className="location flex flex-col justify-between md:space-x-10 md:flex-row">
+        <div className="local-government w-full md:w-2/3">
           <label className="form-label" htmlFor="localGovernment">
             Local Government
           </label>
@@ -70,7 +70,7 @@ export default function PersonalInfo({ update, pay }) {
           />
         </div>
 
-        <div className="state">
+        <div className="state md:mt-3">
           <label className="form-label" htmlFor="state">
             State
           </label>
