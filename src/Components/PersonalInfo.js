@@ -15,7 +15,7 @@ export default function PersonalInfo({ update, pay }) {
         className="form-inputs border border-purple"
         type="text"
         name="name"
-        value={formInfo.name}
+        value={formInfo.personalInfo.name}
         onChange={update}
       />
 
@@ -30,7 +30,7 @@ export default function PersonalInfo({ update, pay }) {
         type="email"
         required
         name="email"
-        value={formInfo.email}
+        value={formInfo.personalInfo.email}
         onChange={update}
       />
 
@@ -41,7 +41,7 @@ export default function PersonalInfo({ update, pay }) {
         className="form-inputs border border-purple"
         type="text"
         name="address1"
-        value={formInfo.address1}
+        value={formInfo.personalInfo.address1}
         onChange={update}
       />
 
@@ -52,7 +52,7 @@ export default function PersonalInfo({ update, pay }) {
         className="form-inputs border border-purple"
         type="text"
         name="address2"
-        value={formInfo.address2}
+        value={formInfo.personalInfo.address2}
         onChange={update}
       />
 
@@ -65,7 +65,7 @@ export default function PersonalInfo({ update, pay }) {
             className="form-inputs border border-purple"
             type="text"
             name="localGovernment"
-            value={formInfo.localGovernment}
+            value={formInfo.personalInfo.localGovernment}
             onChange={update}
           />
         </div>
@@ -76,12 +76,14 @@ export default function PersonalInfo({ update, pay }) {
           </label>
           <select
             name="state"
-            value={formInfo.state}
+            value={formInfo.personalInfo.state || "Select state"}
             onChange={update}
             id="state"
             className="border border-purple pl-2"
           >
-            <option>Select state</option>
+            <option hidden disabled>
+              Select state
+            </option>
             {states.map((state, index) => (
               <option key={index}>{state}</option>
             ))}
@@ -91,3 +93,4 @@ export default function PersonalInfo({ update, pay }) {
     </div>
   );
 }
+

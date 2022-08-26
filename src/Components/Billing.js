@@ -15,7 +15,7 @@ export default function Billing({ update, pay }) {
         name="cardName"
         type="text"
         autoComplete="disabled"
-        value={formInfo.cardName}
+        value={formInfo.billingInfo.cardName}
         onChange={update}
         required
         className="form-inputs border border-purple"
@@ -27,7 +27,7 @@ export default function Billing({ update, pay }) {
       <select
         name="cardType"
         id="cardType"
-        value={formInfo.cardType || "Choose card"}
+        value={formInfo.billingInfo.cardType || "Choose card"}
         onChange={update}
         className="border border-purple"
       >
@@ -46,7 +46,7 @@ export default function Billing({ update, pay }) {
             name="cardNumber"
             type="number"
             autoComplete="disabled"
-            value={formInfo.cardNumber}
+            value={formInfo.billingInfo.cardNumber}
             onChange={update}
             required
             className="form-inputs border border-purple"
@@ -61,7 +61,7 @@ export default function Billing({ update, pay }) {
             name="cardExpDate"
             type="text"
             autoComplete="disabled"
-            value={formInfo.cardExpDate}
+            value={formInfo.billingInfo.cardExpDate}
             onChange={update}
             required
             className="form-inputs border border-purple"
@@ -76,7 +76,7 @@ export default function Billing({ update, pay }) {
             name="cardCvv"
             type="number"
             autoComplete="disabled"
-            value={formInfo.cardCvv}
+            value={formInfo.billingInfo.cardCvv}
             onChange={update}
             required
             className="form-inputs border border-purple"

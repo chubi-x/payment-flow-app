@@ -13,17 +13,21 @@ function App() {
   const [checkedOut, setCheckedOut] = useState(false);
 
   const [formInfo, setFormInfo] = useState({
-    name: "",
-    email: "",
-    address1: "",
-    address2: "",
-    localGovernment: "",
-    state: "",
-    cardName: "",
-    cardType: "",
-    cardNumber: "",
-    cardExpDate: "",
-    cardCvv: "",
+    personalInfo: {
+      name: "",
+      email: "",
+      address1: "",
+      address2: "",
+      localGovernment: "",
+      state: "",
+    },
+    billingInfo: {
+      cardName: "",
+      cardType: "",
+      cardNumber: "",
+      cardExpDate: "",
+      cardCvv: "",
+    },
   });
   function handleSubmit(e) {
     e.preventDefault();

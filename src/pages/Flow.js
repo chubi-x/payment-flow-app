@@ -23,25 +23,36 @@ export default function Flow({ submit }) {
 
   // FUNCTIONS
   const nextTab = () => {
-    if (personalInfo) {
+    if (personalInfo && validateFormSection("personalInfo")) {
       setPersonalInfo(false);
       setBillingInfo(true);
-    } else if (billingInfo) {
+    } else if (billingInfo && validateFormSection("billingInfo")) {
       setConfirmPayment(true);
       setBillingInfo(false);
+    } else if (confirmPayment) {
+      setBillingInfo(false);
+      setPersonalInfo(false);
     } else {
-      setConfirmPayment(true);
+      alert("Please fill all fields");
     }
   };
 
-  function handleChange(event) {
+  function handleChange(event, formSection) {
     const { name, value } = event.target;
     setFormInfo((prevForm) => {
       return {
         ...prevForm,
-        [name]: value,
+        [formSection]: {
+          ...prevForm[formSection],
+          [name]: value,
+        },
       };
     });
+  }
+  function validateFormSection(formSection) {
+    const values = Object.values(formInfo[formSection]);
+    const result = values.some((el) => el === "");
+    return !result;
   }
   return (
     <ActiveTabContext.Provider
@@ -55,7 +66,9 @@ export default function Flow({ submit }) {
         nextTab,
       }}
     >
-      <FormContext.Provider value={{ formInfo, setFormInfo }}>
+      <FormContext.Provider
+        value={{ formInfo, setFormInfo, validateFormSection }}
+      >
         <div className="flow-container container flex flex-col justify-center mx-auto w-2/3 h-full pt-10 md:w-1/2">
           <div className="header">
             <h1 className="text-2xl text-purple font-bold mb-4">
@@ -66,9 +79,17 @@ export default function Flow({ submit }) {
 
           <form onSubmit={submit} id="checkout">
             {personalInfo && (
-              <PersonalInfo update={handleChange} pay={setPay} />
+              <PersonalInfo
+                update={(e) => handleChange(e, "personalInfo")}
+                pay={setPay}
+              />
             )}
-            {billingInfo && <Billing update={handleChange} pay={setPay} />}
+            {billingInfo && (
+              <Billing
+                update={(e) => handleChange(e, "billingInfo")}
+                pay={setPay}
+              />
+            )}
             {confirmPayment && <ConfirmPayment pay={setPay} />}
           </form>
           <FlowButtons pay={pay} next={nextTab} />
@@ -77,3 +98,4 @@ export default function Flow({ submit }) {
     </ActiveTabContext.Provider>
   );
 }
+

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ActiveTabContext } from "../Helpers/Context";
+import { ActiveTabContext, FormContext } from "../Helpers/Context";
 import CheckoutStep from "./CheckoutStep";
 import CheckoutStepBar from "./CheckoutStepBar";
 export default function CheckoutSteps() {
@@ -12,6 +12,8 @@ export default function CheckoutSteps() {
     setConfirmPayment,
   } = useContext(ActiveTabContext);
 
+  const { validateFormSection } = useContext(FormContext);
+
   // function to convert variable name to string
   const varToString = (variable) => {
     return Object.keys(variable)[0];
@@ -22,11 +24,13 @@ export default function CheckoutSteps() {
       bool: personalInfo,
       setter: setPersonalInfo,
       name: varToString({ personalInfo }),
+      valid: validateFormSection("personalInfo"),
     },
     {
       bool: billingInfo,
       setter: setBillingInfo,
       name: varToString({ billingInfo }),
+      valid: validateFormSection("personalInfo"),
     },
     {
       bool: confirmPayment,
@@ -44,11 +48,15 @@ export default function CheckoutSteps() {
   const checkOutSteps = tabsInfo.map((item, index, arr) => (
     <CheckoutStep
       key={index}
-      active={item.bool}
-      value={item.name}
-      toggle={() =>
-        setActive(item.setter, ...arr.filter((el, i) => i !== index))
-      }
+      active={item?.bool}
+      value={item?.name}
+      toggle={() => {
+        item.valid !== undefined
+          ? item?.valid
+            ? setActive(item?.setter, ...arr.filter((el, i) => i !== index))
+            : alert("Please fill all fields")
+          : console.log("");
+      }}
     />
   ));
   return (
