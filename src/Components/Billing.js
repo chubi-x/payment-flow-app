@@ -4,7 +4,27 @@ export default function Billing({ update, pay }) {
   useEffect(() => {
     pay(false);
   }, [pay]);
-  const { formInfo } = useContext(FormContext);
+
+  const { formInfo, setFormInfo } = useContext(FormContext);
+
+  function onlyNumber(event) {
+    if (isNaN(event.key)) {
+      event.preventDefault();
+    }
+  }
+  function formatCC(element, event) {
+    if (element.length < 19) {
+      setFormInfo((prevForm) => {
+        return {
+          ...prevForm,
+          billingInfo: {
+            ...prevForm["billingInfo"],
+            cardNumber: element.replace(/\W/gi, "").replace(/(.{4})/g, "$1 "),
+          },
+        };
+      });
+    } else event.preventDefault();
+  }
   return (
     <div className="form">
       <label htmlFor="cardName" className="form-label">
@@ -46,12 +66,17 @@ export default function Billing({ update, pay }) {
           </label>
           <input
             name="cardNumber"
-            type="number"
+            type="text"
+            maxLength="19"
+            onKeyPress={(event) => {
+              formatCC(formInfo.billingInfo.cardNumber, event);
+              onlyNumber(event);
+            }}
             autoComplete="disabled"
             value={formInfo.billingInfo.cardNumber}
             onChange={update}
             required
-            className="form-inputs border border-purple"
+            className="form-inputs border border-purple tracking-wide"
           />
         </div>
         <div className="extra-details flex items-center justify-around space-x-10 md:space-x-4 md:w-2/5">
@@ -69,7 +94,7 @@ export default function Billing({ update, pay }) {
               className="form-inputs border border-purple"
             />
           </div>
-          <div className="card-cvv  md:w-1/2">
+          <div className="card-cvv md:w-1/2">
             <label htmlFor="cardCvv" className="form-label">
               CVV
               <span className="text-red"> *</span>

@@ -69,7 +69,7 @@ export default function Flow({ submit }) {
       <FormContext.Provider
         value={{ formInfo, setFormInfo, validateFormSection }}
       >
-        <div className="flow-container flex flex-col justify-center mx-auto w-2/3 h-full pt-10 md:w-3/5">
+        <div className="flow-container flex flex-col justify-center mx-auto w-2/3 h-full pt-10 md:w-1/3">
           <div className="header">
             <h1 className="text-2xl text-purple font-bold mb-4">
               Complete your Purchase
